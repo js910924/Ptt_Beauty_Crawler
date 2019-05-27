@@ -34,8 +34,9 @@ class BeautyCrawler:
 	        title = meta.get_text()
 	        link = meta.get('href')
 	        self.date = article.find('div', 'date').get_text().strip().split('/')
-	        
+
 	        if link != '' and self.date == input_date:
+	        	# set path where ever you want
 	            path = ('/Users/jswind/Desktop/pictures/%s' % '.'.join(input_date))
 	            if not os.path.isdir(path):
 	                os.mkdir(path)
@@ -44,14 +45,12 @@ class BeautyCrawler:
 	                os.mkdir(path)
 	            self.getPic(link, path)
 
-	    # self.isFirstPage = False
-
 	def getPic(self, link, path):
-	    print('-----------------Downloading pictures....-----------------')
 	    name = 0   #圖檔取名用
 	    picture_url = 'https://www.ptt.cc' + link
 	    pic_links = self.getSoup(picture_url).findAll('a')
 
+	    print('-----------------Downloading pictures....-----------------')
 	    for i in range(5, len(pic_links)-1):
 	        tmp = pic_links[i].get('href')
 	        if ('.jpg' in tmp) or ('.png' in tmp):
