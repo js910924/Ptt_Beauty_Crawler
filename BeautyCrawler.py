@@ -1,6 +1,7 @@
 from bs4 import BeautifulSoup as bs
 import requests
 import os
+import threading
 
 class BeautyCrawler:
 	def __init__(self, input_date):
@@ -43,7 +44,9 @@ class BeautyCrawler:
 	            path += ('/' + title)
 	            if not os.path.isdir(path):
 	                os.mkdir(path)
-	            self.getPic(link, path)
+
+	            t = threading.Thread(target = self.getPic, args = (link, path))
+	            t.start()
 
 	def getPic(self, link, path):
 	    name = 0   #圖檔取名用
