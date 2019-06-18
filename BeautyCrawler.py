@@ -7,10 +7,11 @@ class BeautyCrawler:
 	def __init__(self, input_date):
 		self.url = 'https://www.ptt.cc/bbs/Beauty/index.html'
 		self.soup = self.getSoup(self.url)
-		# self.isFirstPage = True
 		self.date = ''
 		self.input_date = input_date.split('/')
-
+		self.path = '/Users/jswind/Desktop/pictures/' + '.'.join(self.input_date)
+		os.mkdir(self.path)
+ 
 	def getSoup(self, url):
 	    response = requests.get(url)
 	    soup = bs(response.text, 'html.parser')
@@ -26,10 +27,9 @@ class BeautyCrawler:
 	def getArticles(self, input_date):
 	    articles = self.soup.findAll('div', 'r-ent')
 	    NOT_EXIST = bs('<a href= "">本文已被刪除</a>', 'html.parser').a
-	    tmp = []
-	    for article in articles:
-	        tmp.append(article)
+	    tmp = [article for article in articles]
 	    tmp.reverse()
+	    
 	    for article in tmp:
 	        meta = article.find('div', 'title').find('a') or NOT_EXIST
 	        title = meta.get_text()
@@ -37,14 +37,10 @@ class BeautyCrawler:
 	        self.date = article.find('div', 'date').get_text().strip().split('/')
 
 	        if link != '' and self.date == input_date:
-	        	# set path where ever you want
-	            path = ('/Users/jswind/Desktop/pictures/%s' % '.'.join(input_date))
+	            path = self.path + ('/' + title)
 	            if not os.path.isdir(path):
 	                os.mkdir(path)
-	            path += ('/' + title)
-	            if not os.path.isdir(path):
-	                os.mkdir(path)
-
+		
 	            t = threading.Thread(target = self.getPic, args = (link, path))
 	            t.start()
 
@@ -81,9 +77,7 @@ class BeautyCrawler:
 				break
 			self.url = self.previousPage(self.url)
 
-
 if __name__ == '__main__':
 	input_date = input('請輸入欲搜尋之日期 ： ')
 	Crawler = BeautyCrawler(input_date)
 	Crawler.run()
-
