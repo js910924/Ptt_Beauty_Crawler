@@ -9,6 +9,8 @@ class BeautyCrawler:
 		self.soup = self.getSoup(self.url)
 		self.date = ''
 		self.input_date = input_date.split('/')
+
+		# Set path where you want to store your pictures
 		self.path = '/Users/jswind/Desktop/pictures/' + '.'.join(self.input_date)
 		os.mkdir(self.path)
  
