@@ -6,6 +6,8 @@ This implementation is for learing crawler and python programming skill.
 2019.06.18
 
 > Use multithreading to download pictures and made some change to improve efficiency.
+>
+> Set default path where BeautyCrawler.py is.
 
 ## Instructions
 1. set path in function getArticles
