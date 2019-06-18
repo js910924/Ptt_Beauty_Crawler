@@ -1,11 +1,17 @@
 # PTT Beauty Board Crawler - Python
 This implementation is for learing crawler and python programming skill.
 
+## Update
+
+2019.06.18
+
+> Use multithreading to download pictures and made some change to improve efficiency.
+
 ## Instructions
 1. set path in function getArticles
 ![](https://i.imgur.com/7kovr3w.png)
 2. execute Python file
-3. input date which you want to download (ex. 5/27)
+3. input date which you want to download (ex. 5/27) (m/dd)
 4. wait until it shows 'Mission Complete'
 
 ## Screenshot

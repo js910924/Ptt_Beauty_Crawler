@@ -45,7 +45,7 @@ class BeautyCrawler:
 	            t.start()
 
 	def getPic(self, link, path):
-	    name = 0   #圖檔取名用
+	    name = 0   # 圖檔取名用
 	    picture_url = 'https://www.ptt.cc' + link
 	    pic_links = self.getSoup(picture_url).findAll('a')
 
