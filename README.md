@@ -2,9 +2,11 @@
 This implementation is for learing crawler and python programming skill.
 
 ## Update
+### 2020.01.16
+> Modify error handling
+> Advance input date and article date compare
 
-2019.06.18
-
+### 2019.06.18
 > Use multithreading to download pictures and made some change to improve efficiency.
 > Set default path where BeautyCrawler.py is.
 
