@@ -14,7 +14,7 @@ class BeautyCrawler:
 
 		# Set path where you want to store your pictures
 		# default is your current path
-		self.path = os.getcwd() + '\\' + '.'.join([str(self.input_date.month), str(self.input_date.day)])
+		self.path = os.getcwd() + '/' + '.'.join([str(self.input_date.month), str(self.input_date.day)])
 		if not os.path.exists(self.path):
 			os.mkdir(self.path)
  
@@ -49,7 +49,7 @@ class BeautyCrawler:
 			date = article.find('div', 'date').get_text().strip().split('/')
 			self.date = datetime(self.date.year, int(date[0]), int(date[1]))
 			if link != '' and self.date.strftime("%x") == input_date.strftime("%x"):
-				path = self.path + ('\\' + title)
+				path = self.path + ('/' + title)
 				if not os.path.isdir(path):
 					try:
 						os.mkdir(path)
